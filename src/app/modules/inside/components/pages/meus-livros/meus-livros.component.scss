@@ -1,0 +1,38 @@
+.abc {
+  display: flex;
+}
+
+.menu-button {
+  margin-left: 30px;
+
+  mat-icon {
+    margin-right: 5px;
+    margin-left: -5px;
+  }
+}
+
+.demo-button-container {
+  flex: 1;
+  text-align: end;
+}
+
+.grid-container {
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.mat-elevation-z8 {
+  margin-bottom: 10px;
+}

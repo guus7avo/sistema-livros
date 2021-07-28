@@ -1,0 +1,94 @@
+<div class="grid-container">
+
+  <div class='parent flex-parent'>
+    <div class='child flex-child'><h1 class="mat-h2">{{nomeUsuario}}</h1></div>
+    <div class='child flex-child'></div>
+    <div class='child flex-child1'><p class="mat-body" >Total de livros lidos: <br><br>{{qtdLivrosLidos}}</p></div>
+
+    <!-- <div class='child flex-child'>
+      <button mat-raised-button class="menu-button" [routerLink]="['./meus-livros']">
+        <mat-icon>menu_book</mat-icon>
+        <span>Meus Livros</span>
+      </button>
+    </div>
+
+    <div class='child flex-child'>
+      <button mat-raised-button class="menu-button" [routerLink]="['./biblioteca']" >
+        <mat-icon>local_library</mat-icon>
+        <span>Biblioteca</span>
+      </button>
+    </div> -->
+
+  </div>
+
+  <mat-grid-list cols="1" rowHeight="350px">
+    <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <p>Metas</p>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <p>Estatísticas</p>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+
+
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+
+
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <p>Ranking</p>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+
+
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

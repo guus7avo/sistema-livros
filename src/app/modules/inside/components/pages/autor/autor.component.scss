@@ -1,0 +1,67 @@
+// topo
+.avatar {
+  margin-top: 0px;
+  margin-right: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: none;
+}
+.flex-parent {
+  display: flex;
+}
+.flex-child {
+  flex: 1;
+  text-align: center;
+}
+
+// conteúdo
+.mat-grid-tile-content {
+  justify-content: left;
+  font-size: larger;
+}
+
+.mat-body {
+  font-weight: bold;
+}
+
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+// tabela
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  margin-bottom: 10px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.table-space {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}

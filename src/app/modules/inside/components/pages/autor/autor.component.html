@@ -1,0 +1,171 @@
+<!-- verificar tamanho da imagem (para encaixar imagens maiores)
+testar se realmente corta as letras em outras telas -->
+
+<div class="grid-container">
+
+  <!-- <div fxLayout="row" display="flex" fxLayoutAlign="space-between center">
+
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+      <p>1</p>
+      <p>asdfghj</p>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <div fxLayout="column" fxLayoutAlign="space-around start">
+        <p>2</p>
+        <p>asdfghj</p>
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="space-around center">
+        <p>3</p>
+        <p>asdfghj</p>
+      </div>
+
+    </div>
+
+  </div> -->
+
+  <mat-grid-list cols="2" rowHeight="140px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <img class="avatar mat-elevation-z8" src="https://i.pinimg.com/280x280_RS/4e/61/23/4e61233148840205ba41b6c2980efa96.jpg"/>
+        <div class='child flex-child'>
+          <h2 class="mat-h2">{{nomeAutor}}</h2>
+        </div>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <div class='parent flex-parent'>
+        <div class='child flex-child'>
+          <h3 class="mat-h3">Avaliação média</h3>
+          <h3 class="mat-h3">* * * * *</h3>
+        </div>
+        <div class='child flex-child'>
+          <h3 class="mat-h3">Você já leu {{usuariosLeram}} livros desse autor</h3>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+  <mat-grid-list cols="1" rowHeight="350px">
+    <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <p>Informações</p>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!-- <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <p>Livros publicados</p>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Aqui vai ser uma tabela</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile> -->
+
+
+
+    <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <p>Comentários</p>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+<div class="table-space">
+
+  <mat-card-title>
+    <p>Livros Publicados</p>
+  </mat-card-title>
+
+  <div class="search">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="progress">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
+        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="fruit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fruit </th>
+        <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>
+<br>
+
+</div>

@@ -1,0 +1,29 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Cadastre-se</h1>
+  <mat-card>
+    <mat-card-content>
+      <form>
+        <h2>Cadastro</h2>
+        <!-- <mat-error *ngIf="loginInvalid">
+          The username and password were not recognized
+        </mat-error> -->
+        <mat-form-field class="full-width-input">
+          <input type="text" matInput placeholder="Nome completo" >
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" >
+        </mat-form-field>
+        <!-- <mat-form-field class="full-width-input">
+          <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field> -->
+        <button [routerLink]="['../']" mat-raised-button color="primary">Criar perfil</button><br><br>
+        <!-- <button [routerLink]="['./']" mat-button color="primary">Esqueceu sua senha?</button> -->
+        <button [routerLink]="['../']" mat-button color="primary">Já é cadastrado? Entrar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

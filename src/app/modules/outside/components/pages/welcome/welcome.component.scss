@@ -1,0 +1,54 @@
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.header1{
+  background-image: url('https://images.unsplash.com/photo-1591961172040-ee974a422616?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1451&q=80');
+  height: 70vh;
+  background-attachment: fixed;
+}
+
+.header2{
+  background-image: url('https://images.unsplash.com/photo-1463320726281-696a485928c7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGl2cm9zfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+  height: 70vh;
+  background-attachment: fixed;
+}
+
+.header3{
+  background-image: url('https://images2.alphacoders.com/261/thumb-1920-26102.jpg');
+  height: 70vh;
+  background-attachment: fixed;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  color: white;
+  background: #fafafab6;
+  // background: #673AB7b6;
+}
+
+section{
+  height: 100px;
+}
