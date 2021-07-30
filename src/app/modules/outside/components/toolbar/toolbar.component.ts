@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  title = 'sistema-livros';
+  title = 'Marcador de Livros';
   isAuthenticated = false;
 
   constructor() { }
