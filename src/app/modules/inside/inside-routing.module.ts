@@ -1,3 +1,4 @@
+import { AuthGuard } from './../../core/services/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutorComponent } from './components/pages/autor/autor.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
         path: '',
         component: HomeComponent,
         data: { title: 'Home', breadcrumb: 'Home' },
+        canActivate: [AuthGuard]
       },
       {
         path: 'perfil',
