@@ -1,3 +1,4 @@
+import { AuthGuard } from './../../core/services/auth.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -26,6 +27,12 @@ import { BibliotecaComponent } from './components/pages/biblioteca/biblioteca.co
 import { LivroComponent } from './components/pages/livro/livro.component';
 import { AutorComponent } from './components/pages/autor/autor.component';
 
+import { environment } from './../../../environments/environment.prod';
+import { AngularFireModule } from '@angular/fire';
+// import * as firebase from 'firebase';
+import firebase from 'firebase/app';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [SidenavComponent, HomeComponent, PerfilComponent, MeusLivrosComponent, BibliotecaComponent, LivroComponent, AutorComponent],
@@ -47,7 +54,13 @@ import { AutorComponent } from './components/pages/autor/autor.component';
     MatInputModule,
     MatDividerModule,
     MatSortModule,
-    FlexLayoutModule
-  ]
+    FlexLayoutModule,
+
+    AngularFireModule.initializeApp(environment.firebase),
+
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [AuthGuard]
 })
 export class InsideModule { }
