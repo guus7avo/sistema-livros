@@ -22,7 +22,7 @@ export class AuthService {
     });
   }
 
-  signupUser(user: any): Promise<any> {
+  signupUser(user: any) {
     return this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
         .then((result) => {
             let emailLower = user.email.toLowerCase();
