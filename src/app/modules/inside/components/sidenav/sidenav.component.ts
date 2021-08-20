@@ -1,8 +1,11 @@
+import { AuthService } from './../../../../core/services/auth.service';
 import { Component, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 // import { Observable } from 'rxjs';
 // import { map, shareReplay } from 'rxjs/operators';
 import { MatSidenav } from '@angular/material/sidenav';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-sidenav',
@@ -17,7 +20,7 @@ export class SidenavComponent {
   @ViewChild(MatSidenav)
  sidenav!: MatSidenav;
 
- constructor(private observer: BreakpointObserver) {}
+ constructor(private observer: BreakpointObserver, public afAuth: AngularFireAuth, private firestore: AngularFirestore, private authService: AuthService) {}
 
  ngAfterViewInit() {
    setTimeout(() => {
@@ -32,6 +35,10 @@ export class SidenavComponent {
      });
    })
  }
+
+ logout() {
+  this.authService.signOut();
+}
 
   // showFiller = false;
 

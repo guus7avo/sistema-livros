@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -8,8 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-    constructor(private router: Router, private afAuth: AngularFireAuth) {
-
+    constructor(private router: Router, private afAuth: AngularFireAuth, private ngZone:NgZone) {
     }
 
     canActivate(
@@ -26,11 +25,10 @@ export class AuthGuard implements CanActivate {
                     resolve(true);
                 } else {
                     console.log('Auth Guard: user is not logged in');
-                    this.router.navigate(['/home']);                   // a logged out user will always be sent to home
+                    this.ngZone.run(()=>this.router.navigate(['/']));                   // a logged out user will always be sent to home
                     resolve(false);
                 }
             });
         });
     }
-
 }

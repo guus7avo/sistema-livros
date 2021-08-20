@@ -22,7 +22,7 @@ export class AuthService {
     });
   }
 
-  signupUser(user: any): Promise<any> {
+  signupUser(user: any) {
     return this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
         .then((result) => {
             let emailLower = user.email.toLowerCase();
@@ -34,7 +34,6 @@ export class AuthService {
                 return { isValid: false, message: error.message };
         });
 }
-
 
   loginUser(email: string, password: string): Promise<any> {
     return this.afAuth.signInWithEmailAndPassword(email, password)
@@ -51,6 +50,11 @@ export class AuthService {
       });
   }
 
+  signOut() {
+    return this.afAuth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    })
+  }
 
 
 }

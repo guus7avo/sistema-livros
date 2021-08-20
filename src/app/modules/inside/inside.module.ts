@@ -1,3 +1,4 @@
+import { AuthService } from './../../core/services/auth.service';
 import { AuthGuard } from './../../core/services/auth.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -61,6 +62,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard]
+  providers: [AuthGuard, AuthService]
 })
 export class InsideModule { }
