@@ -35,7 +35,6 @@ export class AuthService {
         });
 }
 
-
   loginUser(email: string, password: string): Promise<any> {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then(() => {
@@ -51,6 +50,11 @@ export class AuthService {
       });
   }
 
+  signOut() {
+    return this.afAuth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    })
+  }
 
 
 }

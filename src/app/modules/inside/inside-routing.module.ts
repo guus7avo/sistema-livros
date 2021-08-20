@@ -14,12 +14,12 @@ const routes: Routes = [
     path: '',
     component: SidenavComponent,
     data: { title: 'Sidenav', breadcrumb: 'Sidenav' },
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
         component: HomeComponent,
         data: { title: 'Home', breadcrumb: 'Home' },
-        canActivate: [AuthGuard]
       },
       {
         path: 'perfil',

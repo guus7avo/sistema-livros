@@ -108,7 +108,7 @@
 
         <mat-divider></mat-divider>
 
-        <button mat-button class="menu-button" [routerLink]="['/..']">
+        <button mat-button class="menu-button" (click)="logout()">
           <mat-icon>logout</mat-icon>
           <span>Sair</span>
         </button>
