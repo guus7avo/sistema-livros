@@ -17,12 +17,14 @@ import { AngularFireModule } from '@angular/fire';
 // import * as firebase from 'firebase';
 import firebase from 'firebase/app';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     CommonModule,
