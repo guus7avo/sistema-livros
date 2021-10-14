@@ -32,13 +32,19 @@
             <span>{{ firebaseErrorMessage }}</span>
         </div>
 
-
         <button mat-raised-button color="primary">Login</button><br><br>
 
       </form>
 
       <button [routerLink]="['./forgot-password']" mat-button color="primary">Esqueceu sua senha?</button>
       <button [routerLink]="['./register']" mat-button color="primary">Novo aqui? Cadastre-se</button>
+      <hr>
+      <br>
+
+      <button mat-raised-button color="warn" (click)="authService.googleSignin()">
+        <mat-icon>google</mat-icon>
+        <span>Entre com Google</span>
+      </button><br><br>
 
   </mat-card>
 </div>
