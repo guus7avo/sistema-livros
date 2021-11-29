@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { LogService } from 'src/app/core/services/log.service';
 
 export interface UserData {
   id: string;
@@ -36,12 +37,16 @@ export class MeusLivrosComponent implements AfterViewInit {
   @ViewChild(MatSort)
    sort!: MatSort;
 
-  constructor() {
+  constructor(private logService: LogService) {
     // Create 100 users
     const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(users);
+  }
+
+  addLivros() {
+    this.logService.consoleLog('Livro adicionado');
   }
 
   ngAfterViewInit() {
