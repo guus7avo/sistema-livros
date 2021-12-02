@@ -8,6 +8,7 @@ import { LivroComponent } from './components/pages/livro/livro.component';
 import { MeusLivrosComponent } from './components/pages/meus-livros/meus-livros.component';
 import { PerfilComponent } from './components/pages/perfil/perfil.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { CadastrarLivroComponent } from './components/dialogs/cadastrar-livro/cadastrar-livro.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,11 @@ const routes: Routes = [
         path: 'autor',
         component: AutorComponent,
         data: { title: 'Autor', breadcrumb: 'Autor' },
+      },
+      {
+        path: 'cadastrar-livro',
+        component: CadastrarLivroComponent,
+        data: { title: 'Cadastrar-Livro', breadcrumb: 'Cadastrar-Livro' },
       },
     ]
   },

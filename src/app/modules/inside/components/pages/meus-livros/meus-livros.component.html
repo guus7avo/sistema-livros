@@ -7,7 +7,7 @@
     </div>
 
     <div class="demo-button-container">
-      <button mat-raised-button color="primary" class="menu-button" (click)="addLivros()">
+      <button mat-raised-button color="primary" class="menu-button" (click)="openDialog()">
         <mat-icon>add</mat-icon>
         <span>Adicionar livros</span>
       </button>
@@ -18,6 +18,27 @@
 
   </div>
 
+  <form [formGroup]="formLivro" (ngSubmit)="addLivros()">
+    <h2>Cadastrar Livro</h2>
+
+    <mat-form-field class="full-width-input">
+      <mat-label>Titulo</mat-label>
+        <input formControlName="titulo" matInput type="titulo">
+    </mat-form-field>
+
+    <mat-form-field class="full-width-input">
+      <mat-label>Autor</mat-label>
+        <input formControlName="autor" matInput type="autor">
+    </mat-form-field>
+
+    <mat-form-field class="full-width-input">
+      <mat-label>Genero</mat-label>
+        <input formControlName="genero" matInput type="genero" >
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">CADASTRAR</button><br><br>
+
+  </form>
 
   <!-- <div class="demo-button-container">
     <button mat-raised-button class="demo-button">

@@ -33,10 +33,13 @@ import { AngularFireModule } from '@angular/fire';
 // import * as firebase from 'firebase';
 import firebase from 'firebase/app';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { CrudService } from 'src/app/core/services/crud.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CadastrarLivroComponent } from './components/dialogs/cadastrar-livro/cadastrar-livro.component';
 
 @NgModule({
-  declarations: [SidenavComponent, HomeComponent, PerfilComponent, MeusLivrosComponent, BibliotecaComponent, LivroComponent, AutorComponent],
+  declarations: [SidenavComponent, HomeComponent, PerfilComponent, MeusLivrosComponent, BibliotecaComponent, 
+    LivroComponent, AutorComponent, CadastrarLivroComponent, ],
   imports: [
     CommonModule,
     InsideRoutingModule,
@@ -60,8 +63,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
   ],
-  providers: [AuthGuard, AuthService]
+  providers: [AuthGuard, AuthService, CrudService]
 })
 export class InsideModule { }

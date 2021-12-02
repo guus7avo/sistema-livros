@@ -1,8 +1,13 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { CrudService } from 'src/app/core/services/crud.service';
 import { LogService } from 'src/app/core/services/log.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CadastrarLivroComponent } from '../../dialogs/cadastrar-livro/cadastrar-livro.component';
+
 
 export interface UserData {
   id: string;
@@ -37,7 +42,17 @@ export class MeusLivrosComponent implements AfterViewInit {
   @ViewChild(MatSort)
    sort!: MatSort;
 
-  constructor(private logService: LogService) {
+   formLivro: FormGroup;
+
+  constructor(private logService: LogService, private formBuilder: FormBuilder, 
+    private crud: CrudService, public dialog: MatDialog) {
+
+    this.formLivro = formBuilder.group({
+      titulo: ['', Validators.compose([Validators.required])],
+      autor: ['', Validators.compose([Validators.required])],
+      genero: ['', Validators.compose([Validators.required])]
+    })
+
     // Create 100 users
     const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
@@ -45,8 +60,35 @@ export class MeusLivrosComponent implements AfterViewInit {
     this.dataSource = new MatTableDataSource(users);
   }
 
+  // openDialog() {
+  //   const dialogRef = this.dialog.open(CadastrarLivroComponent);
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(`Dialog result: ${result}`);
+  //   });
+  // }
+
+  openDialog(){
+    let dialogRef = this.dialog.open(CadastrarLivroComponent, {data: {name: 'Nome do usuário'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`)
+    })
+  }
+  
   addLivros() {
-    this.logService.consoleLog('Livro adicionado');
+    if(this.formLivro.valid){
+      this.crud.create(this.formLivro.value)
+      .then((res)=>{
+        console.log(res)
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+      this.logService.consoleLog('Livro adicionado');
+    } else {
+      console.log("Todos os campos são obrigatórios")
+    }
   }
 
   ngAfterViewInit() {
