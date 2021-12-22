@@ -18,6 +18,17 @@
 
   </div>
 
+  <!-- <div class="list">
+
+    <mat-list>
+      <mat-list-item *ngFor="let p of crud.lista | async">
+        <p>{{ p.nome }}</p>
+        
+      </mat-list-item>
+    </mat-list>
+
+  </div> -->
+
   <form [formGroup]="formLivro" (ngSubmit)="addLivros()">
     <h2>Cadastrar Livro</h2>
 
