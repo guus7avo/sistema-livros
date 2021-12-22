@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Livro } from './models/livro.models';
 
@@ -7,7 +8,24 @@ import { Livro } from './models/livro.models';
 })
 export class CrudService {
 
-  constructor(private afs: AngularFirestore) { }
+  public lista: any;
+  public user_id: any;
+  public user_name: any;
+  public user_photo: any;
+
+  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe((user)=>{
+      this.user_id = user?.uid;
+      this.user_name = user?.displayName;
+      this.user_photo = user?.photoURL;
+      console.log(this.user_id)
+      console.log(this.user_name)
+      console.log(this.user_photo)
+      // this.list(this.user_id)
+
+      this.list();
+      })
+   }
 
   create(livro: Livro){
     livro.id = this.afs.createId()
@@ -15,7 +33,7 @@ export class CrudService {
   }
 
   list(){
-
+    this.lista = this.afs.collection('Livros').valueChanges();
   }
 
   update(livro: Livro){

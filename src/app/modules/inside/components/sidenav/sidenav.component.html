@@ -58,10 +58,10 @@
 
   <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" color="primary">
-      <img class="avatar mat-elevation-z8" src="https://i.pinimg.com/280x280_RS/4e/61/23/4e61233148840205ba41b6c2980efa96.jpg"/>
+      <img class="avatar mat-elevation-z8" src="{{crud.user_photo}}"/>
 
-      <h4 class="name">Cristiano Ronaldo</h4>
-      <p class="designation">Melhor Jogador do Mundo</p>
+      <h4 class="name">{{crud.user_name}}</h4>
+      <!-- <p class="designation">Melhor Jogador do Mundo</p> -->
 
       <mat-divider></mat-divider>
         <button mat-button class="menu-button" [routerLink]="['/app']">

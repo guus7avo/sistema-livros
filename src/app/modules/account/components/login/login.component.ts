@@ -38,6 +38,16 @@ export class LoginComponent implements OnInit {
   }
 
     loginUser() {
+      // if (this.loginForm.valid){
+      //   this.authService.loginUser(this.loginForm.value)
+      //     .then((user) => {
+      //       console.log(user)
+      //       this.router.navigate(['./app']);
+      //     })
+      //     .catch((error) => {
+      //       console.log(error)
+      //     })
+      //   }
         if (this.loginForm.invalid)
             return;
 
