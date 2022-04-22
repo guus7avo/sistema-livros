@@ -27,20 +27,20 @@ export class CrudService {
       })
    }
 
-  create(livro: Livro){
-    livro.id = this.afs.createId()
-    return this.afs.collection('Livros').doc(livro.id).set(livro)
+  save(livro: Livro){
+    livro.id == "" ? livro.id = this.afs.createId() : livro.id = livro.id
+    return this.afs.collection('Livros').doc(livro.id).set(livro, { merge: true })
   }
 
   list(){
     this.lista = this.afs.collection('Livros').valueChanges();
   }
 
-  update(livro: Livro){
-    return this.afs.collection('Livros').doc(livro.id).set(livro)
-  }
+  // update(livro: Livro){
+  //   return this.afs.collection('Livros').doc(livro.id).set(livro, { merge: true })
+  // }
 
-  delete(){
-    
+  delete(id: string){
+    return this.afs.collection('Livros').doc(id).delete()
   }
 }

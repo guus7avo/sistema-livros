@@ -7,7 +7,7 @@
     </div>
 
     <div class="demo-button-container">
-      <button mat-raised-button color="primary" class="menu-button" (click)="openDialog()">
+      <button mat-raised-button color="primary" class="menu-button" (click)="openDialogAdd()">
         <mat-icon>add</mat-icon>
         <span>Adicionar livros</span>
       </button>
@@ -18,18 +18,21 @@
 
   </div>
 
-  <!-- <div class="list">
+  <div class="list">
 
     <mat-list>
       <mat-list-item *ngFor="let p of crud.lista | async">
-        <p>{{ p.nome }}</p>
-        
+        <p>{{ p.titulo }}</p>
+        <p>{{ p.autor }}</p>
+        <p>{{ p.genero }}</p>
+        <button mat-icon-button (click)="editLivro(p)">Editar</button>
+        <button mat-icon-button (click)="deleteLivro(p.id)">Excluir</button>
       </mat-list-item>
     </mat-list>
 
-  </div> -->
+  </div>
 
-  <form [formGroup]="formLivro" (ngSubmit)="addLivros()">
+  <form [formGroup]="formLivro" (ngSubmit)="addLivro()">
     <h2>Cadastrar Livro</h2>
 
     <mat-form-field class="full-width-input">

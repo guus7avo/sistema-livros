@@ -7,6 +7,9 @@ import { CrudService } from 'src/app/core/services/crud.service';
 import { LogService } from 'src/app/core/services/log.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CadastrarLivroComponent } from '../../dialogs/cadastrar-livro/cadastrar-livro.component';
+import { Livro } from 'src/app/core/services/models/livro.models';
+import { EditarLivroComponent } from '../../dialogs/editar-livro/editar-livro.component';
+import { DeletarLivroComponent } from '../../dialogs/deletar-livro/deletar-livro.component';
 
 
 export interface UserData {
@@ -44,10 +47,11 @@ export class MeusLivrosComponent implements AfterViewInit {
 
    formLivro: FormGroup;
 
-  constructor(private logService: LogService, private formBuilder: FormBuilder, 
-    private crud: CrudService, public dialog: MatDialog) {
+  constructor(private logService: LogService, private formBuilder: FormBuilder,
+    public crud: CrudService, public dialog: MatDialog) {
 
     this.formLivro = formBuilder.group({
+      id: [''],
       titulo: ['', Validators.compose([Validators.required])],
       autor: ['', Validators.compose([Validators.required])],
       genero: ['', Validators.compose([Validators.required])]
@@ -68,17 +72,33 @@ export class MeusLivrosComponent implements AfterViewInit {
   //   });
   // }
 
-  openDialog(){
+  openDialogAdd(){
     let dialogRef = this.dialog.open(CadastrarLivroComponent, {data: {name: 'Nome do usuário'}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`)
     })
   }
-  
-  addLivros() {
+
+  openDialogEdit(livro: Livro){
+    let dialogRef = this.dialog.open(EditarLivroComponent, {data: {name: 'Nome do usuário'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`)
+    })
+  }
+
+  openDialogDelete(){
+    let dialogRef = this.dialog.open(DeletarLivroComponent, {data: {name: 'Nome do usuário'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`)
+    })
+  }
+
+  addLivro() {
     if(this.formLivro.valid){
-      this.crud.create(this.formLivro.value)
+      this.crud.save(this.formLivro.value)
       .then((res)=>{
         console.log(res)
       })
@@ -89,6 +109,26 @@ export class MeusLivrosComponent implements AfterViewInit {
     } else {
       console.log("Todos os campos são obrigatórios")
     }
+  }
+
+  editLivro(livro: Livro){
+    this.formLivro.patchValue({
+      id: livro.id,
+      titulo: livro.titulo,
+      autor: livro.autor,
+      genero: livro.genero
+    })
+  }
+
+  deleteLivro(id: string) {
+      this.crud.delete(id)
+      .then((res)=>{
+        console.log("Produto excluído")
+        this.logService.consoleLog('Livro excluído');
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
   }
 
   ngAfterViewInit() {
