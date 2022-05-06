@@ -1,34 +1,39 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
 import { CrudService } from 'src/app/core/services/crud.service';
-import { LogService } from 'src/app/core/services/log.service';
+import { Livro } from './../../../../../core/services/models/livro.models';
+//app.component.ts
+import { Component, ViewChild } from '@angular/core';
+
+import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { CadastrarLivroComponent } from '../../dialogs/cadastrar-livro/cadastrar-livro.component';
-import { Livro } from 'src/app/core/services/models/livro.models';
-import { EditarLivroComponent } from '../../dialogs/editar-livro/editar-livro.component';
-import { DeletarLivroComponent } from '../../dialogs/deletar-livro/deletar-livro.component';
+import { DialogBoxComponent } from '../../dialogs/dialog-box/dialog-box.component';
+import { AngularFirestore } from '@angular/fire/firestore';
+// import { DeletarLivroComponent } from '../../dialogs/deletar-livro/deletar-livro.component';
 
-const ELEMENT_DATA: Livro[] = [
-  {id: '', titulo: '', autor: '', genero: ''},
-];
+// export interface UsersData {
+//   name: string;
+//   id: number;
+// }
 
- @Component({
+// const ELEMENT_DATA: Livro[] = [
+//   {id: '', titulo: '', autor: '', genero: ''}
+// ];
+@Component({
   selector: 'app-meus-livros',
   templateUrl: './meus-livros.component.html',
   styleUrls: ['./meus-livros.component.scss']
 })
 export class MeusLivrosComponent {
+  displayedColumns: string[] = ['id', 'titulo', 'autor', 'genero', 'action'];
+  public book: any;
 
-  displayedColumns: string[] = [ 'titulo', 'autor', 'genero', 'editar', 'excluir'];
-  dataSource = ELEMENT_DATA;
+  formLivro: FormGroup;
 
-   formLivro: FormGroup;
+  @ViewChild(MatTable, { static: true })
+  table!: MatTable<any>;
 
-  constructor(private logService: LogService, private formBuilder: FormBuilder,
-    public crud: CrudService, public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, public crud: CrudService, private afs: AngularFirestore, private formBuilder: FormBuilder) {
+    this.book = this.afs.collection('Livros').valueChanges()
 
     this.formLivro = formBuilder.group({
       id: [''],
@@ -39,52 +44,31 @@ export class MeusLivrosComponent {
 
   }
 
-  // openDialog() {
-  //   const dialogRef = this.dialog.open(CadastrarLivroComponent);
+  openDialog(action: any,obj: { action: any; }) {
+    obj.action = action;
+    const dialogRef = this.dialog.open(DialogBoxComponent, {
+      width: '250px',
+      data:obj
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.event == 'Update'){
+        this.updateRowData(result.data);
+      }else if(result.event == 'Delete'){
+        this.deleteRowData(result.data);
+      }
+    });
+  }
+
+  // addRowData(row_obj: { name: any; }){
+  //   var d = new Date();
+  //   this.book.push({
+  //     id:d.getTime(),
+  //     name:row_obj.name
   //   });
+  //   this.table.renderRows();
+
   // }
-
-  openDialogAdd(){
-    let dialogRef = this.dialog.open(CadastrarLivroComponent, {data: {name: 'Nome do usuário'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`)
-    })
-  }
-
-  openDialogEdit(livro: Livro){
-    let dialogRef = this.dialog.open(EditarLivroComponent, {data: {name: 'Nome do usuário'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`)
-    })
-  }
-
-  openDialogDelete(){
-    let dialogRef = this.dialog.open(DeletarLivroComponent, {data: {name: 'Nome do usuário'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`)
-    })
-  }
-
-  addLivro() {
-    if(this.formLivro.valid){
-      this.crud.save(this.formLivro.value)
-      .then((res)=>{
-        console.log(res)
-      })
-      .catch((error)=>{
-        console.log(error)
-      })
-      this.logService.consoleLog('Livro adicionado');
-    } else {
-      console.log("Todos os campos são obrigatórios")
-    }
-  }
 
   editLivro(livro: Livro){
     this.formLivro.patchValue({
@@ -95,16 +79,76 @@ export class MeusLivrosComponent {
     })
   }
 
-  deleteLivro(id: string) {
-      this.crud.delete(id)
-      .then((res)=>{
-        console.log("Produto excluído")
-        this.logService.consoleLog('Livro excluído');
-      })
-      .catch((error)=>{
-        console.log(error)
-      })
+  updateRowData(livro: Livro){
+    this.book = this.formLivro.patchValue({
+      id: livro.id,
+      titulo: livro.titulo,
+      autor: livro.autor,
+      genero: livro.genero
+    });
   }
-
+  deleteRowData(row_obj: { id: string; }){
+    this.book = this.book.filter((value: { id: string; },key: any)=>{
+      return value.id != row_obj.id;
+    });
+  }
 }
 
+// openDialogAdd(){
+//   let dialogRef = this.dialog.open(CadastrarLivroComponent, {data: {name: 'Nome do usuário'}});
+
+//   dialogRef.afterClosed().subscribe(result => {
+//     console.log(`Dialog result: ${result}`)
+//   })
+// }
+
+// openDialogEdit(livro: Livro){
+//   let dialogRef = this.dialog.open(EditarLivroComponent, {data: {name: 'Nome do usuário'}});
+
+//   dialogRef.afterClosed().subscribe(result => {
+//     console.log(`Dialog result: ${result}`)
+//   })
+// }
+
+// openDialogDelete(){
+//   let dialogRef = this.dialog.open(DeletarLivroComponent, {data: {name: 'Nome do usuário'}});
+
+//   dialogRef.afterClosed().subscribe(result => {
+//     console.log(`Dialog result: ${result}`)
+//   })
+// }
+
+// addLivro() {
+//   if(this.formLivro.valid){
+//     this.crud.save(this.formLivro.value)
+//     .then((res)=>{
+//       console.log(res)
+//     })
+//     .catch((error)=>{
+//       console.log(error)
+//     })
+//     this.logService.consoleLog('Livro adicionado');
+//   } else {
+//     console.log("Todos os campos são obrigatórios")
+//   }
+// }
+
+// editLivro(livro: Livro){
+//   this.formLivro.patchValue({
+//     id: livro.id,
+//     titulo: livro.titulo,
+//     autor: livro.autor,
+//     genero: livro.genero
+//   })
+// }
+
+// deleteLivro(id: string) {
+//     this.crud.delete(id)
+//     .then((res)=>{
+//       console.log("Produto excluído")
+//       this.logService.consoleLog('Livro excluído');
+//     })
+//     .catch((error)=>{
+//       console.log(error)
+//     })
+// }

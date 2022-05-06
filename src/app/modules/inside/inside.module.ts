@@ -38,10 +38,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CadastrarLivroComponent } from './components/dialogs/cadastrar-livro/cadastrar-livro.component';
 import { EditarLivroComponent } from './components/dialogs/editar-livro/editar-livro.component';
 import { DeletarLivroComponent } from './components/dialogs/deletar-livro/deletar-livro.component';
+import { DialogBoxComponent } from './components/dialogs/dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [SidenavComponent, HomeComponent, PerfilComponent, MeusLivrosComponent, BibliotecaComponent, 
-    LivroComponent, AutorComponent, CadastrarLivroComponent, EditarLivroComponent, DeletarLivroComponent, ],
+    LivroComponent, AutorComponent, CadastrarLivroComponent, EditarLivroComponent, DeletarLivroComponent, DialogBoxComponent, ],
   imports: [
     CommonModule,
     InsideRoutingModule,
