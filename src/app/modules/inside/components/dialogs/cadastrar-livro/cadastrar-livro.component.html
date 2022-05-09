@@ -1,29 +1,27 @@
-<h2 mat-dialog-title>Cadastrar Livro</h2>
-<mat-dialog-content class="mat-typography">
-    <form [formGroup]="formLivro" (ngSubmit)="addLivros()">
+<h2 mat-dialog-title>{{title}} Livro</h2>
+<div mat-dialog-content class="mat-typography">
         <!-- <h2>Cadastrar Livro</h2> -->
-    
+
         <mat-form-field class="full-width-input">
           <mat-label>Titulo</mat-label>
-            <input formControlName="titulo" matInput type="titulo">
+            <input matInput [(ngModel)]="modalData.titulo">
         </mat-form-field>
         <br>
         <mat-form-field class="full-width-input">
           <mat-label>Autor</mat-label>
-            <input formControlName="autor" matInput type="autor">
+            <input matInput [(ngModel)]="modalData.autor">
         </mat-form-field>
         <br>
         <mat-form-field class="full-width-input">
           <mat-label>Genero</mat-label>
-            <input formControlName="genero" matInput type="genero" >
+            <input matInput [(ngModel)]="modalData.genero" >
         </mat-form-field>
-    
+
         <!-- <button mat-raised-button color="primary">CADASTRAR</button><br><br> -->
-    
-      </form>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close = "false">Cancelar</button>
-  <button mat-button mat-dialog-close = "true" (click)="addLivros()" cdkFocusInitial>Cadastrar</button>
-</mat-dialog-actions>
+
+      </div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="modalData" cdkFocusInitial>{{title}}</button>
+</div>
 

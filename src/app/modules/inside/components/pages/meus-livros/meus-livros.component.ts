@@ -10,6 +10,8 @@ import { CadastrarLivroComponent } from '../../dialogs/cadastrar-livro/cadastrar
 import { Livro } from 'src/app/core/services/models/livro.models';
 import { EditarLivroComponent } from '../../dialogs/editar-livro/editar-livro.component';
 import { DeletarLivroComponent } from '../../dialogs/deletar-livro/deletar-livro.component';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
 
 const ELEMENT_DATA: Livro[] = [
   {id: '', titulo: '', autor: '', genero: ''},
@@ -22,89 +24,53 @@ const ELEMENT_DATA: Livro[] = [
 })
 export class MeusLivrosComponent {
 
-  displayedColumns: string[] = [ 'titulo', 'autor', 'genero', 'editar', 'excluir'];
-  dataSource = ELEMENT_DATA;
-
-   formLivro: FormGroup;
+  displayedColumns: string[] = [ 'titulo', 'autor', 'genero', 'acoes'];
+  dataSource: any;
+  dbName = 'Livros';
 
   constructor(private logService: LogService, private formBuilder: FormBuilder,
-    public crud: CrudService, public dialog: MatDialog) {
-
-    this.formLivro = formBuilder.group({
-      id: [''],
-      titulo: ['', Validators.compose([Validators.required])],
-      autor: ['', Validators.compose([Validators.required])],
-      genero: ['', Validators.compose([Validators.required])]
-    })
-
+    public crud: CrudService, public dialog: MatDialog, private afd: AngularFireDatabase) {
+      this.dataSource = this.afd.list(this.dbName)
+      .snapshotChanges()
+      .pipe(
+        map(items => {
+          return items.map(item => {
+            return Object.assign({ key: item.payload.key }, item.payload.val())
+          })
+        })
+      )
   }
 
-  // openDialog() {
-  //   const dialogRef = this.dialog.open(CadastrarLivroComponent);
+  insert(){
+    const dialogRef = this.dialog.open(CadastrarLivroComponent, {
+      width: '250px',
+      data: { type: 'create'}
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.afd.list(this.dbName).push(result)
+      }
+    });
+  }
+
+  editLivro(data: any){
+    const dialogRef = this.dialog.open(CadastrarLivroComponent, {
+      width: '250px',
+      data: { ...data, type: 'update'}
+    });
+    console.log('saiu de editLivro()')
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.afd.list(this.dbName).update( data.key, result )
+      }
+    });
+  }
+
+  // deleteLivro(key){
+  //   this.afd.list(this.dbName).remove(key);
   // }
-
-  openDialogAdd(){
-    let dialogRef = this.dialog.open(CadastrarLivroComponent, {data: {name: 'Nome do usuário'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`)
-    })
-  }
-
-  openDialogEdit(livro: Livro){
-    let dialogRef = this.dialog.open(EditarLivroComponent, {data: {name: 'Nome do usuário'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`)
-    })
-  }
-
-  openDialogDelete(){
-    let dialogRef = this.dialog.open(DeletarLivroComponent, {data: {name: 'Nome do usuário'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`)
-    })
-  }
-
-  addLivro() {
-    if(this.formLivro.valid){
-      this.crud.save(this.formLivro.value)
-      .then((res)=>{
-        console.log(res)
-      })
-      .catch((error)=>{
-        console.log(error)
-      })
-      this.logService.consoleLog('Livro adicionado');
-    } else {
-      console.log("Todos os campos são obrigatórios")
-    }
-  }
-
-  editLivro(livro: Livro){
-    this.formLivro.patchValue({
-      id: livro.id,
-      titulo: livro.titulo,
-      autor: livro.autor,
-      genero: livro.genero
-    })
-  }
-
-  deleteLivro(id: string) {
-      this.crud.delete(id)
-      .then((res)=>{
-        console.log("Produto excluído")
-        this.logService.consoleLog('Livro excluído');
-      })
-      .catch((error)=>{
-        console.log(error)
-      })
-  }
 
 }
 
