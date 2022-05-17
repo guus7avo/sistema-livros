@@ -1,6 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic:wght@400;700&family=Goudy+Bookletter+1911&display=swap');
+
 .expanded-toolbar {
   justify-content: space-between;
   align-items: center;
+}
+
+.botao {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.botao-login {
+  border: none;
+  box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #673AB7;
 }
 
 // .example-spacer {

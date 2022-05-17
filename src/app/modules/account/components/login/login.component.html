@@ -1,27 +1,21 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Faça login</h1>
   <mat-card>
       <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
-        <h2>Login</h2>
-        <!-- <mat-error *ngIf="loginInvalid">
-          The username and password were not recognized
-        </mat-error> -->
+        <h2 class="fonte-titulo">LOGIN</h2>
         <p>
           <mat-form-field class="full-width-input">
-            <input autocomplete="off" formControlName="email" type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" >
-            <mat-error *ngIf="emailFormControl.hasError('email') || emailFormControl.hasError('required')">
+            <mat-label class="fonte">Ex. exemplo@email.com</mat-label>
+            <input class="fonte" autocomplete="off" formControlName="email" type="email" matInput [formControl]="emailFormControl">
+            <mat-error class="fonte" *ngIf="emailFormControl.hasError('email') || emailFormControl.hasError('required')">
               <strong>Insira um e-mail válido</strong>
             </mat-error>
-            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-              <strong>Insira um e-mail</strong>
-            </mat-error> -->
           </mat-form-field>
         </p>
 
         <p>
           <mat-form-field class="full-width-input">
-            <mat-label>Enter your password</mat-label>
-              <input autocomplete="off" formControlName="password" type="password" matInput [type]="hide ? 'password' : 'text'">
+            <mat-label class="fonte">Insira a sua senha</mat-label>
+              <input class="fonte" autocomplete="off" formControlName="password" type="password" matInput [type]="hide ? 'password' : 'text'">
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
@@ -32,18 +26,21 @@
             <span>{{ firebaseErrorMessage }}</span>
         </div>
 
-        <button mat-raised-button color="primary">Login</button><br><br>
+        <button mat-raised-button color="primary" class="fonte">
+        <mat-icon>login</mat-icon>
+          Login
+        </button><br><br>
 
       </form>
 
-      <button [routerLink]="['./forgot-password']" mat-button color="primary">Esqueceu sua senha?</button>
-      <button [routerLink]="['./register']" mat-button color="primary">Novo aqui? Cadastre-se</button>
+      <button [routerLink]="['./forgot-password']" mat-button color="primary" class="fonte">Esqueceu sua senha?</button>
+      <button [routerLink]="['./register']" mat-button color="primary" class="fonte">Novo aqui? Cadastre-se</button>
       <hr>
       <br>
 
       <button mat-raised-button color="warn" (click)="authService.googleSignin()">
-        <mat-icon>google</mat-icon>
-        <span>Entre com Google</span>
+        <mat-icon>email</mat-icon>
+        <span class="fonte">Entre com Google</span>
       </button><br><br>
 
   </mat-card>

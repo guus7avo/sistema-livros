@@ -1,54 +1,88 @@
-.grid-container {
-  margin: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic:wght@400;700&family=Goudy+Bookletter+1911&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+body {
+  font-size: 100%;
+  background: linear-gradient(#673AB7, #8162b8);
 }
 
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+.main {
+  // margin-top: 48px;
+  margin-bottom: 48px;
 }
 
-.dashboard-card-content {
-  text-align: center;
-}
-
-.header1{
-  background-image: url('https://images.unsplash.com/photo-1591961172040-ee974a422616?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1451&q=80');
-  height: 70vh;
-  background-attachment: fixed;
-}
-
-.header2{
-  background-image: url('https://images.unsplash.com/photo-1463320726281-696a485928c7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGl2cm9zfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
-  height: 70vh;
-  background-attachment: fixed;
-}
-
-.header3{
-  background-image: url('https://images2.alphacoders.com/261/thumb-1920-26102.jpg');
-  height: 70vh;
-  background-attachment: fixed;
-}
-
-.container {
+.conteudo1 {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  height: 100%;
-
-  color: white;
-  background: #fafafab6;
-  // background: #673AB7b6;
+  justify-content: space-around ;
 }
 
-section{
-  height: 100px;
+.conteudo1-escrito {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.conteudo1-titulo {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-weight: 700;
+  font-size: 84px;
+  color: white;
+}
+
+.conteudo1-subtitulo {
+  font-family: 'Gentium Book Basic', serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: white;
+}
+
+.conteudo1-botao {
+  background-color: white;
+  width: 180px;
+  height: 60px;
+  border: none;
+  box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #673AB7;
+}
+
+.conteudo1-imagem {
+  margin-top: 48px;
+  height: 300px;
+}
+
+.conteudo2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.conteudo2-titulo {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: white;
+  padding-top: 48px;
+  margin-bottom: 32px;
+}
+
+.conteudo2-paragrafo {
+  font-family: 'Gentium Book Basic', serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: white;
 }
