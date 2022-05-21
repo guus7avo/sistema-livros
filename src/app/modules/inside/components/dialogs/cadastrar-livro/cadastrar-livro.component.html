@@ -2,7 +2,7 @@
 <mat-dialog-content class="mat-typography">
     <form [formGroup]="formLivro" (ngSubmit)="addLivros()">
         <!-- <h2>Cadastrar Livro</h2> -->
-    
+
         <mat-form-field class="full-width-input">
           <mat-label>Titulo</mat-label>
             <input formControlName="titulo" matInput type="titulo">
@@ -17,9 +17,14 @@
           <mat-label>Genero</mat-label>
             <input formControlName="genero" matInput type="genero" >
         </mat-form-field>
-    
+        <br>
+        <mat-form-field class="full-width-input">
+          <mat-label>Lido?</mat-label>
+            <input formControlName="lido" matInput type="lido" >
+        </mat-form-field>
+
         <!-- <button mat-raised-button color="primary">CADASTRAR</button><br><br> -->
-    
+
       </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

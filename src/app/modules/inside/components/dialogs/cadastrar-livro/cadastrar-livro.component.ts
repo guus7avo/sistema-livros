@@ -20,7 +20,8 @@ export class CadastrarLivroComponent {
         id: [''],
         titulo: ['', Validators.compose([Validators.required])],
         autor: ['', Validators.compose([Validators.required])],
-        genero: ['', Validators.compose([Validators.required])]
+        genero: ['', Validators.compose([Validators.required])],
+        lido: ['', Validators.compose([Validators.required])]
       })
   }
 
@@ -61,7 +62,8 @@ export class CadastrarLivroComponent {
       id: livro.id,
       titulo: livro.titulo,
       autor: livro.autor,
-      genero: livro.genero
+      genero: livro.genero,
+      lido: livro.lido
     })
   }
 }

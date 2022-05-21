@@ -12,7 +12,7 @@ import { EditarLivroComponent } from '../../dialogs/editar-livro/editar-livro.co
 import { DeletarLivroComponent } from '../../dialogs/deletar-livro/deletar-livro.component';
 
 const ELEMENT_DATA: Livro[] = [
-  {id: '', titulo: '', autor: '', genero: ''},
+  {id: '', titulo: '', autor: '', genero: '', lido: '', user_create: '', user_edit: ''},
 ];
 
  @Component({
@@ -22,7 +22,7 @@ const ELEMENT_DATA: Livro[] = [
 })
 export class MeusLivrosComponent {
 
-  displayedColumns: string[] = [ 'titulo', 'autor', 'genero', 'editar', 'excluir'];
+  displayedColumns: string[] = [ 'titulo', 'autor', 'genero', 'lido', 'editar', 'excluir'];
   dataSource = ELEMENT_DATA;
 
    formLivro: FormGroup;
@@ -34,7 +34,8 @@ export class MeusLivrosComponent {
       id: [''],
       titulo: ['', Validators.compose([Validators.required])],
       autor: ['', Validators.compose([Validators.required])],
-      genero: ['', Validators.compose([Validators.required])]
+      genero: ['', Validators.compose([Validators.required])],
+      lido: ['', Validators.compose([Validators.required])]
     })
 
   }
@@ -91,7 +92,8 @@ export class MeusLivrosComponent {
       id: livro.id,
       titulo: livro.titulo,
       autor: livro.autor,
-      genero: livro.genero
+      genero: livro.genero,
+      lido: livro.lido
     })
   }
 

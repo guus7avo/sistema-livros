@@ -15,25 +15,28 @@ export class CrudService {
 
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe((user)=>{
-      this.user_id = user?.uid;
-      this.user_name = user?.displayName;
-      this.user_photo = user?.photoURL;
-      console.log(this.user_id)
-      console.log(this.user_name)
-      console.log(this.user_photo)
-      // this.list(this.user_id)
-
-      this.list();
+      if(user?.uid) {
+        this.afAuth.authState.subscribe((user) => {
+          this.user_id = user?.uid;
+          this.user_name = user?.displayName;
+          console.log(this.user_id)
+          console.log(this.user_name)
+          this.list(this.user_id)
+        })
+      }
       })
    }
 
   save(livro: Livro){
+    livro.id == "" ? livro.user_create = this.user_id : livro.user_edit = this.user_id
     livro.id == "" ? livro.id = this.afs.createId() : livro.id = livro.id
     return this.afs.collection('Livros').doc(livro.id).set(livro, { merge: true })
   }
 
-  list(){
-    this.lista = this.afs.collection('Livros').valueChanges();
+  list(uid: string){
+    this.lista = this.afs.collection('Livros', ref => {
+      return ref.where('user_create', '==', uid)
+    }).valueChanges();
   }
 
   // update(livro: Livro){
