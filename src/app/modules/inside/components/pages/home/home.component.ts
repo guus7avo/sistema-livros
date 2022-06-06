@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/core/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -28,5 +29,5 @@ cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     ];
   })
 );
-  constructor(private breakpointObserver: BreakpointObserver, public afAuth: AngularFireAuth, public crud: CrudService) {}
+  constructor(private breakpointObserver: BreakpointObserver, public afAuth: AngularFireAuth, public crud: CrudService, public authService: AuthService) {}
 }

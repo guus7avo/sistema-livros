@@ -1,5 +1,5 @@
-<div class="grid-container">
-  <h1 class="mat-h1">Bem-vindo, {{crud.user_name}}</h1>
+<div class="grid-container" *ngIf="authService.userData as user">
+  <h1 class="mat-h1">Bem-vindo, {{user.email}}</h1>
 
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
@@ -18,6 +18,12 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>Card Content Here</div>
+          <div class="media-body">
+            <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+            <p>User ID: <strong>{{user.uid}}</strong></p>
+            <p>Email: <strong>{{user.email}}</strong></p>
+            <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

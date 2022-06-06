@@ -22,7 +22,7 @@ export class SidenavComponent {
   @ViewChild(MatSidenav)
  sidenav!: MatSidenav;
 
- constructor(private observer: BreakpointObserver, public afAuth: AngularFireAuth, 
+ constructor(private observer: BreakpointObserver, public afAuth: AngularFireAuth,
   private firestore: AngularFirestore, private authService: AuthService, public crud: CrudService) {
     this.afAuth.authState.subscribe((user)=>{
       this.user_name = user?.displayName;
@@ -46,7 +46,7 @@ export class SidenavComponent {
  }
 
  logout() {
-  this.authService.signOut();
+  this.authService.SignOut();
 }
 
   // showFiller = false;

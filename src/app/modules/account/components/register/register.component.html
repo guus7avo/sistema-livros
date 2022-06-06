@@ -1,51 +1,67 @@
 <div class="grid-container">
   <h1 class="mat-h1">Cadastre-se</h1>
   <mat-card>
-      <form [formGroup]="signupForm" (ngSubmit)="signup()">
-        <h2>Cadastro</h2>
-        <!-- <mat-error *ngIf="loginInvalid">
-          The username and password were not recognized
-        </mat-error> -->
-        <p>
-          <mat-form-field class="full-width-input">
-            <input autocomplete="off" formControlName="displayName" type="text" matInput placeholder="Nome completo" >
-          </mat-form-field>
-        </p>
-
-        <p>
-          <mat-form-field class="full-width-input">
-            <input formControlName="email" type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" >
-          </mat-form-field>
-        </p>
-
-        <p>
-          <mat-form-field class="full-width-input">
-            <mat-label>Enter your password</mat-label>
-              <input autocomplete="off" formControlName="password" type="password" matInput placeholder="Password" matInput [type]="hide ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-          </mat-form-field>
-        </p>
-
-        <div *ngIf="firebaseErrorMessage != ''" class="error-style">
-          <span>{{ firebaseErrorMessage }}</span>
+    <div class="displayTable">
+      <div class="displayTableCell">
+        <div class="authBlock">
+          <h3>Sign Up</h3>
+          <div class="formGroup">
+            <input
+              type="text"
+              class="formControl"
+              placeholder="Name"
+              #displayName
+              required
+            />
+          </div>
+          <div class="formGroup">
+            <input
+              type="email"
+              class="formControl"
+              placeholder="Email Address"
+              #userEmail
+              required
+            />
+          </div>
+          <div class="formGroup">
+            <input
+              type="password"
+              class="formControl"
+              placeholder="Password"
+              #userPwd
+              required
+            />
+          </div>
+          <div class="formGroup">
+            <input
+              type="button"
+              class="btn btnPrimary"
+              value="Sign Up"
+              (click)="authService.SignUp(userEmail.value, userPwd.value)"
+            />
+          </div>
+          <div class="formGroup">
+            <span class="or"><span class="orInner">Or</span></span>
+          </div>
+          <!-- Continue with Google -->
+          <div class="formGroup">
+            <button
+              type="button"
+              class="btn googleBtn"
+              (click)="authService.GoogleAuth()"
+            >
+              <i class="fab fa-google-plus-g"></i>
+              Continue with Google
+            </button>
+          </div>
         </div>
-
-
-        <button mat-raised-button color="primary">Criar perfil</button><br><br>
-      </form> 
-
-      <!-- <button [routerLink]="['./forgot-password']" mat-button color="primary">Esqueceu sua senha?</button> -->
-      <button [routerLink]="['../']" mat-button color="primary">Já é cadastrado? Entrar</button>
-
-      <hr>
-      <br>
-
-      <button mat-raised-button color="warn" (click)="authService.googleSignin()">
-        <mat-icon>google</mat-icon>
-        <span>Entre com Google</span>
-      </button><br><br>
-
+        <div class="redirectToLogin">
+          <span
+            >Already have an account?
+            <span class="redirect" routerLink="/login">Log In</span></span
+          >
+        </div>
+      </div>
+    </div>
   </mat-card>
 </div>

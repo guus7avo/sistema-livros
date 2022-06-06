@@ -1,50 +1,35 @@
 <div class="grid-container">
   <h1 class="mat-h1">Faça login</h1>
   <mat-card>
-      <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
-        <h2>Login</h2>
-        <!-- <mat-error *ngIf="loginInvalid">
-          The username and password were not recognized
-        </mat-error> -->
-        <p>
-          <mat-form-field class="full-width-input">
-            <input autocomplete="off" formControlName="email" type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" >
-            <mat-error *ngIf="emailFormControl.hasError('email') || emailFormControl.hasError('required')">
-              <strong>Insira um e-mail válido</strong>
-            </mat-error>
-            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-              <strong>Insira um e-mail</strong>
-            </mat-error> -->
-          </mat-form-field>
-        </p>
+    <div class="displayTable">
+      <div class="displayTableCell">
+        <div class="authBlock">
+          <h3>Sign In</h3>
+          <div class="formGroup">
+            <input type="text" class="formControl" placeholder="Username" #userName required>
+          </div>
+          <div class="formGroup">
+            <input type="password" class="formControl" placeholder="Password" #userPassword required>
+          </div>
+          <!-- Calling SignIn Api from AuthService -->
+          <div class="formGroup">
+            <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+          </div>
+          <div class="formGroup">
+            <span class="or"><span class="orInner">Or</span></span>
+          </div>
+          <!-- Calling GoogleAuth Api from AuthService -->
+          <div class="formGroup">
+            <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+              <i class="fab fa-google-plus-g"></i>
+              Log in with Google
+            </button>
+          </div>
 
-        <p>
-          <mat-form-field class="full-width-input">
-            <mat-label>Enter your password</mat-label>
-              <input autocomplete="off" formControlName="password" type="password" matInput [type]="hide ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-          </mat-form-field>
-        </p>
-
-        <div *ngIf="firebaseErrorMessage != ''" class="error-style">
-            <span>{{ firebaseErrorMessage }}</span>
         </div>
-
-        <button mat-raised-button color="primary">Login</button><br><br>
-
-      </form>
-
-      <button [routerLink]="['./forgot-password']" mat-button color="primary">Esqueceu sua senha?</button>
-      <button [routerLink]="['./register']" mat-button color="primary">Novo aqui? Cadastre-se</button>
-      <hr>
-      <br>
-
-      <button mat-raised-button color="warn" (click)="authService.googleSignin()">
-        <mat-icon>google</mat-icon>
-        <span>Entre com Google</span>
-      </button><br><br>
-
+        <button [routerLink]="['./forgot-password']" mat-button color="primary">Esqueceu sua senha?</button>
+        <button [routerLink]="['./register']" mat-button color="primary">Novo aqui? Cadastre-se</button>
+      </div>
+    </div>
   </mat-card>
 </div>
