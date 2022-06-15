@@ -1,8 +1,7 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Cadastre-se</h1>
   <mat-card>
       <form [formGroup]="signupForm" (ngSubmit)="signup()">
-        <h2>Cadastro</h2>
+        <h2 class="fonte-titulo">Cadastro</h2>
         <!-- <mat-error *ngIf="loginInvalid">
           The username and password were not recognized
         </mat-error> -->
@@ -33,17 +32,20 @@
         </div>
 
 
-        <button mat-raised-button color="primary">Criar perfil</button><br><br>
-      </form> 
+        <button mat-raised-button color="primary" class="fonte-titulo">
+          <mat-icon>person</mat-icon>
+          <span>Criar perfil</span>
+        </button><br><br>
+      </form>
 
       <!-- <button [routerLink]="['./forgot-password']" mat-button color="primary">Esqueceu sua senha?</button> -->
-      <button [routerLink]="['../']" mat-button color="primary">Já é cadastrado? Entrar</button>
+      <button [routerLink]="['../']" mat-button color="primary" class="fonte-titulo">Já é cadastrado? Entrar</button>
 
       <hr>
       <br>
 
-      <button mat-raised-button color="warn" (click)="authService.googleSignin()">
-        <mat-icon>google</mat-icon>
+      <button mat-raised-button color="warn" (click)="authService.googleSignin()" class="fonte-titulo">
+        <mat-icon>mail</mat-icon>
         <span>Entre com Google</span>
       </button><br><br>
 

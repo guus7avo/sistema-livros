@@ -8,8 +8,8 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./livro.component.scss']
 })
 export class LivroComponent {
-  tituloLivro = 'As extraordinárias viagens de Júlio Verne - Box com 6 títulos'
-  nomeAutor = "por Júlio Verne (Autor), Frank Oliveira (Tradutor), Andréia Manfrin Alves (Tradutor), Juliana Ramos Gonçalves (Tradutor) "
+  tituloLivro = 'Aqui está o título do livro'
+  nomeAutor = "Autor, Autora"
   usuariosLeram = 2;
   usuariosTotal = 10;
 

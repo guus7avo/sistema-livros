@@ -12,6 +12,7 @@ export class CrudService {
   public user_id: any;
   public user_name: any;
   public user_photo: any;
+  public user_email: any;
 
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe((user)=>{
@@ -19,6 +20,7 @@ export class CrudService {
         this.afAuth.authState.subscribe((user) => {
           this.user_id = user?.uid;
           this.user_name = user?.displayName;
+          this.user_email = user?.email;
           console.log(this.user_id)
           console.log(this.user_name)
           this.list(this.user_id)

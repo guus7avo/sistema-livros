@@ -1,36 +1,10 @@
-<!-- verificar tamanho da imagem (para encaixar imagens maiores)
-testar se realmente corta as letras em outras telas -->
-
 <div class="grid-container">
-
-  <!-- <div fxLayout="row" display="flex" fxLayoutAlign="space-between center">
-
-    <div fxLayout="column" fxLayoutAlign="space-around center">
-      <p>1</p>
-      <p>asdfghj</p>
-    </div>
-
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-      <div fxLayout="column" fxLayoutAlign="space-around start">
-        <p>2</p>
-        <p>asdfghj</p>
-      </div>
-
-      <div fxLayout="column" fxLayoutAlign="space-around center">
-        <p>3</p>
-        <p>asdfghj</p>
-      </div>
-
-    </div>
-
-  </div> -->
-
   <mat-grid-list cols="2" rowHeight="140px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <div fxLayout="row" fxLayoutAlign="space-around center">
-        <img class="avatar mat-elevation-z8" src="https://i.pinimg.com/280x280_RS/4e/61/23/4e61233148840205ba41b6c2980efa96.jpg"/>
+        <img class="avatar mat-elevation-z8" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
         <div class='child flex-child'>
-          <h2 class="mat-h2">{{nomeAutor}}</h2>
+          <h2 class="mat-body">{{nomeAutor}}</h2>
         </div>
       </div>
     </mat-grid-tile>
@@ -38,11 +12,11 @@ testar se realmente corta as letras em outras telas -->
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <div class='parent flex-parent'>
         <div class='child flex-child'>
-          <h3 class="mat-h3">Avaliação média</h3>
-          <h3 class="mat-h3">* * * * *</h3>
+          <h3 class="mat-body">Avaliação média</h3>
+          <h3 class="mat-body">* * * * *</h3>
         </div>
         <div class='child flex-child'>
-          <h3 class="mat-h3">Você já leu {{usuariosLeram}} livros desse autor</h3>
+          <h3 class="mat-body">Você já leu {{usuariosLeram}} livros desse autor</h3>
         </div>
       </div>
     </mat-grid-tile>
@@ -53,7 +27,7 @@ testar se realmente corta as letras em outras telas -->
     <mat-grid-tile>
       <mat-card class="dashboard-card">
         <mat-card-header>
-          <mat-card-title>
+          <mat-card-title class="mat-body">
             <p>Informações</p>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
@@ -71,32 +45,10 @@ testar se realmente corta as letras em outras telas -->
       </mat-card>
     </mat-grid-tile>
 
-    <!-- <mat-grid-tile>
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            <p>Livros publicados</p>
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Aqui vai ser uma tabela</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile> -->
-
-
-
     <mat-grid-tile>
       <mat-card class="dashboard-card">
         <mat-card-header>
-          <mat-card-title>
+          <mat-card-title class="mat-body">
             <p>Comentários</p>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
@@ -116,7 +68,7 @@ testar se realmente corta as letras em outras telas -->
 
 <div class="table-space">
 
-  <mat-card-title>
+  <mat-card-title class="mat-body">
     <p>Livros Publicados</p>
   </mat-card-title>
 
@@ -163,7 +115,7 @@ testar se realmente corta as letras em outras telas -->
       </tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <mat-paginator class="mat-form-field" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
 </div>
 <br>

@@ -20,8 +20,8 @@
         Play
       </button> -->
         <a class="fonte" [routerLink]="['/welcome']" mat-button>Principal</a>
-        <a class="fonte" [routerLink]="['/sobre']" mat-button>Sobre</a>
-        <a class="fonte" [routerLink]="['/contato']" mat-button>Contato</a>
+        <!-- <a class="fonte" [routerLink]="['/sobre']" mat-button>Sobre</a>
+        <a class="fonte" [routerLink]="['/contato']" mat-button>Contato</a> -->
         <a class="fonte-login" [routerLink]="['/login']" mat-raised-button>Login</a>
     </div>
   </mat-toolbar>
@@ -34,14 +34,14 @@
       <mat-icon>home</mat-icon>
       Principal
     </button>
-    <button mat-menu-item [routerLink]="['/sobre']">
+    <!-- <button mat-menu-item [routerLink]="['/sobre']">
       <mat-icon>info</mat-icon>
       Sobre
     </button>
     <button mat-menu-item [routerLink]="['/contato']">
       <mat-icon>quick_contacts_mail</mat-icon>
       Contato
-    </button>
+    </button> -->
     <button mat-menu-item [routerLink]="['/login']" *ngIf="!isAuthenticated">
       <mat-icon>login</mat-icon>
       Login

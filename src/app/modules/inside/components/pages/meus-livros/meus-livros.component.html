@@ -2,7 +2,7 @@
 
   <div class="abc">
     <div class="xyz">
-      <h1 class="mat-h1">Meus Livros</h1>
+      <h1 class="fonte-titulo">Meus Livros</h1>
       <!-- <h3 class="mat-h3">Organize sua lista de leitura</h3> -->
     </div>
 
@@ -19,7 +19,7 @@
   </div>
 
   <form [formGroup]="formLivro" (ngSubmit)="addLivro()">
-    <h2>Editar Livro</h2>
+    <h2 class="fonte-titulo">Editar Livro</h2>
 
     <mat-form-field class="full-width-input">
       <mat-label>Titulo</mat-label>
@@ -41,7 +41,7 @@
         <input formControlName="lido" matInput type="lido" >
     </mat-form-field>
 
-    <button mat-raised-button color="primary">Salvar</button><br><br>
+    <button mat-raised-button color="primary" class="fonte-titulo">Salvar</button><br><br>
 
   </form>
 
@@ -88,19 +88,19 @@
     <ng-container matColumnDef="editar">
       <th mat-header-cell *matHeaderCellDef> Editar </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="editLivro(element)">Editar</button>
+        <button mat-icon-button (click)="editLivro(element)" class="fonte">Editar</button>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="excluir">
       <th mat-header-cell *matHeaderCellDef> Excluir </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="deleteLivro(element.id)">Excluir</button>
+        <button mat-icon-button (click)="deleteLivro(element.id)" class="fonte">Excluir</button>
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr class="fonte" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr class="fonte" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
   <br>

@@ -10,7 +10,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent {
-  nomeUsuario = 'Nome Usuário'
   qtdLivrosLidos = 10;
 
   /** Based on the screen size, switch from standard to one column per row */

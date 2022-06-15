@@ -1,13 +1,26 @@
+body {
+  background: linear-gradient(#673AB7, #673AB7B6) ;
+}
+
 .grid-container {
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  color: white;
 }
 
 .dashboard-card {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  background: none;
+  color: white;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .more-button {
@@ -17,5 +30,31 @@
 }
 
 .dashboard-card-content {
+  display: flex;
+  flex-direction: row;
   text-align: center;
+  margin-top: 10px;
+}
+
+.titulo {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.fonte-titulo {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.fonte {
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: space-around;
+  align-items: baseline;
+  justify-content: center;
 }

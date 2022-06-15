@@ -5,7 +5,7 @@
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <div class='parent flex-parent'>
         <div class='child flex-child'>
-          <img class="avatar mat-elevation-z8" src="https://a-static.mlcdn.com.br/1500x1500/as-extraordinarias-viagens-de-julio-verne-box-com-6-volumes-principis/bbcards/box0012/ca71e7fb633e0b81614cdb14caa6c8e9.jpg"/>
+          <img class="avatar mat-elevation-z8" src="https://cdn.pixabay.com/photo/2013/04/01/10/57/manual-98728_960_720.png"/>
         </div>
       </div>
     </mat-grid-tile>
@@ -14,10 +14,10 @@
       <div fxLayout="row" fxLayoutAlign="space-around center">
         <div class='child flex-child'>
           <mat-card-title>
-            <p class="mat-h2">{{tituloLivro}}</p>
+            <p class="mat-body">{{tituloLivro}}</p>
           </mat-card-title>
           <mat-card-subtitle>
-            <p class="mat-h4">{{nomeAutor}}</p>
+            <p class="mat-body">{{nomeAutor}}</p>
           </mat-card-subtitle>
 
         </div>
@@ -31,7 +31,7 @@
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <div class='parent flex-parent'>
         <div class='child flex-child'>
-          <h3 class="mat-h3">{{usuariosLeram}} de {{usuariosTotal}} usuários já leram esse livro</h3>
+          <h3 class="mat-body">{{usuariosLeram}} de {{usuariosTotal}} usuários já leram esse livro</h3>
           <div class="demo-button-container">
             <button mat-raised-button color="primary" class="menu-button">
               <mat-icon>add</mat-icon>
@@ -48,8 +48,8 @@
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <div class='parent flex-parent'>
         <div class='child flex-child'>
-          <h3 class="mat-h3">Avaliação média</h3>
-          <h3 class="mat-h3">* * * * *</h3>
+          <h3 class="mat-body">Avaliação média</h3>
+          <h3 class="mat-body">* * * * *</h3>
         </div>
       </div>
     </mat-grid-tile>
@@ -61,7 +61,7 @@
     <mat-grid-tile>
       <mat-card class="dashboard-card">
         <mat-card-header>
-          <mat-card-title>
+          <mat-card-title class="mat-body">
             <p>Informações</p>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
@@ -82,7 +82,7 @@
     <mat-grid-tile>
       <mat-card class="dashboard-card">
         <mat-card-header>
-          <mat-card-title>
+          <mat-card-title class="mat-body">
             <p>Frases</p>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
@@ -104,7 +104,7 @@
     <mat-grid-tile>
       <mat-card class="dashboard-card">
         <mat-card-header>
-          <mat-card-title>
+          <mat-card-title class="mat-body">
             <p>Comentários</p>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
