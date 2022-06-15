@@ -6,6 +6,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { CrudService } from 'src/app/core/services/crud.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,12 +16,20 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 export class SidenavComponent {
 
   title = 'sistema-livros';
-
+  public user_name: any;
+  public user_photo: any;
 
   @ViewChild(MatSidenav)
  sidenav!: MatSidenav;
 
- constructor(private observer: BreakpointObserver, public afAuth: AngularFireAuth, private firestore: AngularFirestore, private authService: AuthService) {}
+ constructor(private observer: BreakpointObserver, public afAuth: AngularFireAuth, 
+  private firestore: AngularFirestore, private authService: AuthService, public crud: CrudService) {
+    this.afAuth.authState.subscribe((user)=>{
+      this.user_name = user?.displayName;
+      this.user_photo = user?.photoURL;
+      console.log(this.user_name)
+      })
+  }
 
  ngAfterViewInit() {
    setTimeout(() => {

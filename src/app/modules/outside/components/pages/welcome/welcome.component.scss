@@ -1,13 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+body {
+  background: linear-gradient(#673AB7, #673AB7B6) ;
+}
+
 .grid-container {
-  margin: 20px;
+  color: white;
 }
 
 .dashboard-card {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  background: none;
+  color: white;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .more-button {
@@ -17,38 +29,67 @@
 }
 
 .dashboard-card-content {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.flex-parent {
+  display: flex;
+}
+.flex-child {
   text-align: center;
 }
 
-.header1{
-  background-image: url('https://images.unsplash.com/photo-1591961172040-ee974a422616?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1451&q=80');
-  height: 70vh;
-  background-attachment: fixed;
+.avatar {
+  margin-top: 0px;
+  // margin-bottom: 10px;
+  // margin-right: 20px;
+  width: 200px;
+  height: 200px;
+  // border-radius: 50%;
 }
 
-.header2{
-  background-image: url('https://images.unsplash.com/photo-1463320726281-696a485928c7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGl2cm9zfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
-  height: 70vh;
-  background-attachment: fixed;
+.button {
+  color: #673AB7;
+  flex-direction: row;
+  height: 50px;
+  width: 200px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
 }
 
-.header3{
-  background-image: url('https://images2.alphacoders.com/261/thumb-1920-26102.jpg');
-  height: 70vh;
-  background-attachment: fixed;
+mat-icon {
+  margin-right: 10px;
 }
 
-.container {
+.titulo {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.subtitulo {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.fonte-titulo {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.fonte {
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
   display: flex;
-  align-items: center;
+  flex-wrap: nowrap;
+  align-content: space-around;
+  align-items: baseline;
   justify-content: center;
-  height: 100%;
-
-  color: white;
-  background: #fafafab6;
-  // background: #673AB7b6;
-}
-
-section{
-  height: 100px;
 }

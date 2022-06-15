@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
   signupForm!: FormGroup; //erro aqui
   firebaseErrorMessage: String;
 
-  constructor(private authService: AuthService, private router: Router, private afAuth: AngularFireAuth) {
+  constructor(public authService: AuthService, private router: Router, private afAuth: AngularFireAuth) {
     this.firebaseErrorMessage = "";
   }
 

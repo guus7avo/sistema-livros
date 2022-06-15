@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
 .expanded-toolbar {
   justify-content: space-between;
   align-items: center;
@@ -6,3 +8,16 @@
 // .example-spacer {
 //   flex: 1 1 auto;
 // }
+
+.fonte {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.fonte-login {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #673AB7;
+}

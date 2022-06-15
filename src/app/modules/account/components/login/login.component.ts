@@ -6,7 +6,6 @@ import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '
 import { AuthService } from './../../../../core/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
-
 // Form Email
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   firebaseErrorMessage: string;
 
-  constructor(private authService: AuthService, private router: Router, private afAuth: AngularFireAuth) {
+  constructor(public authService: AuthService, private router: Router, private afAuth: AngularFireAuth) {
     this.loginForm = new FormGroup({
         'email': new FormControl('', [Validators.required, Validators.email]),
         'password': new FormControl('', Validators.required)
@@ -39,6 +38,16 @@ export class LoginComponent implements OnInit {
   }
 
     loginUser() {
+      // if (this.loginForm.valid){
+      //   this.authService.loginUser(this.loginForm.value)
+      //     .then((user) => {
+      //       console.log(user)
+      //       this.router.navigate(['./app']);
+      //     })
+      //     .catch((error) => {
+      //       console.log(error)
+      //     })
+      //   }
         if (this.loginForm.invalid)
             return;
 
@@ -54,7 +63,6 @@ export class LoginComponent implements OnInit {
         });
     }
 
-
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -62,9 +70,5 @@ export class LoginComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
   hide = true;
-
-
-
-
 
 }

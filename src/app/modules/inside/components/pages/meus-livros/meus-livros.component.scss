@@ -4,6 +4,8 @@
 
 .menu-button {
   margin-left: 30px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
 
   mat-icon {
     margin-right: 5px;
@@ -22,6 +24,7 @@
 
 table {
   width: 100%;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .mat-form-field {
@@ -35,4 +38,17 @@ td, th {
 
 .mat-elevation-z8 {
   margin-bottom: 10px;
+}
+
+.full-width-input {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.fonte {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.fonte-titulo {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
 }

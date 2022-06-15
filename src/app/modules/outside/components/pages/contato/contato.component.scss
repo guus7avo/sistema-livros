@@ -1,13 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+body {
+  background: linear-gradient(#673AB7, #673AB7B6) ;
+}
+
 .grid-container {
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  color: white;
 }
 
 .dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+  background: none;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+}
+
+.titulo {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
 }
 
 .more-button {
@@ -28,6 +41,21 @@ mat-card {
 
 mat-form-field {
   display: block;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
+form {
+  display: block;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
+button {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
 }
 
 textarea{

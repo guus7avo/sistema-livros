@@ -8,6 +8,9 @@ import { LivroComponent } from './components/pages/livro/livro.component';
 import { MeusLivrosComponent } from './components/pages/meus-livros/meus-livros.component';
 import { PerfilComponent } from './components/pages/perfil/perfil.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { CadastrarLivroComponent } from './components/dialogs/cadastrar-livro/cadastrar-livro.component';
+import { EditarLivroComponent } from './components/dialogs/editar-livro/editar-livro.component';
+import { DeletarLivroComponent } from './components/dialogs/deletar-livro/deletar-livro.component';
 
 const routes: Routes = [
   {
@@ -45,6 +48,21 @@ const routes: Routes = [
         path: 'autor',
         component: AutorComponent,
         data: { title: 'Autor', breadcrumb: 'Autor' },
+      },
+      {
+        path: 'cadastrar-livro',
+        component: CadastrarLivroComponent,
+        data: { title: 'Cadastrar-Livro', breadcrumb: 'Cadastrar-Livro' },
+      },
+      {
+        path: 'editar-livro',
+        component: EditarLivroComponent,
+        data: { title: 'Editar-Livro', breadcrumb: 'Editar-Livro' },
+      },
+      {
+        path: 'deletar-livro',
+        component: DeletarLivroComponent,
+        data: { title: 'Deletar-Livro', breadcrumb: 'Deletar-Livro' },
       },
     ]
   },

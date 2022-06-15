@@ -1,26 +1,3 @@
-<!-- <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" mode="side">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="['/app']">Home</a>
-      <a mat-list-item [routerLink]="['./perfil']">Perfil</a>
-      <a mat-list-item [routerLink]="['./meus-livros']">Meus Livros</a>
-      <a mat-list-item [routerLink]="['./biblioteca']">Biblioteca</a>
-      <a mat-list-item [routerLink]="['/..']">Sair</a> fazer logout()
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button type="button" mat-icon-button (click)="drawer.toggle()">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>sistema-livros</span>
-    </mat-toolbar>
-     Add Content Here
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container> -->
-
 <mat-toolbar class="mat-elevation-z8" color="primary">
   <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon *ngIf="!sidenav.opened">
@@ -33,53 +10,31 @@
 
   <button mat-button routerLink="/app">{{title}}</button>
 
-  <!-- ideia de menu semelhante ao externo
-    class="expanded-toolbar"
-  <div fxLayout="row" fxShow="false" fxShow.gt-xs>
-
-    <button mat-button class="menu-button">
-      <mat-icon>info</mat-icon>
-      <span>Sobre</span>
-    </button>
-
-    <button mat-button class="menu-button">
-        <mat-icon>contact_mail</mat-icon>
-        <span>Contato</span>
-    </button>
-
-    <button mat-button class="menu-button" [routerLink]="['/..']">
-      <mat-icon>logout</mat-icon>
-      <span>Sair</span>
-    </button>
-
-  </div> -->
-
 </mat-toolbar>
 
   <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" color="primary">
-      <img class="avatar mat-elevation-z8" src="https://i.pinimg.com/280x280_RS/4e/61/23/4e61233148840205ba41b6c2980efa96.jpg"/>
+      <img class="avatar mat-elevation-z8" src="{{(crud.user_photo) ? crud.user_photo : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'}}"/>
 
-      <h4 class="name">Cristiano Ronaldo</h4>
-      <p class="designation">Melhor Jogador do Mundo</p>
+      <h4 class="name">{{crud.user_email}}</h4>
 
       <mat-divider></mat-divider>
         <button mat-button class="menu-button" [routerLink]="['/app']">
             <mat-icon>home</mat-icon>
             <span>Home</span>
         </button>
-
+<!--
         <button mat-button class="menu-button" [routerLink]="['./perfil']">
             <mat-icon>person</mat-icon>
             <span>Perfil</span>
-        </button>
+        </button> -->
 
         <button mat-button class="menu-button" [routerLink]="['./meus-livros']">
             <mat-icon>menu_book</mat-icon>
             <span>Meus Livros</span>
         </button>
 
-        <button mat-button class="menu-button" [routerLink]="['./biblioteca']" >
+        <!-- <button mat-button class="menu-button" [routerLink]="['./biblioteca']" >
           <mat-icon>local_library</mat-icon>
           <span>Biblioteca</span>
         </button>
@@ -104,7 +59,7 @@
         <button mat-button class="menu-button">
             <mat-icon>contact_mail</mat-icon>
             <span>Contato</span>
-        </button>
+        </button> -->
 
         <mat-divider></mat-divider>
 

@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { LogService } from './core/services/log.service';
+import { MatDialogModule } from '@angular/material/dialog';
+
 // import { AngularFireModule } from '@angular/fire';
 // import { environment } from '../environments/environment';
 
@@ -19,8 +22,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     BrowserAnimationsModule,
     MatToolbarModule,
     // AngularFireModule.initializeApp(environment.firebase)
+    MatDialogModule
   ],
-  providers: [],
+  providers: [LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

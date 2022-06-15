@@ -1,8 +1,7 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Faça login</h1>
   <mat-card>
       <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
-        <h2>Login</h2>
+        <h2 class="fonte-titulo">Login</h2>
         <!-- <mat-error *ngIf="loginInvalid">
           The username and password were not recognized
         </mat-error> -->
@@ -32,13 +31,22 @@
             <span>{{ firebaseErrorMessage }}</span>
         </div>
 
-
-        <button mat-raised-button color="primary">Login</button><br><br>
+        <button mat-raised-button color="primary" class="fonte-titulo">
+          <mat-icon>login</mat-icon>
+          <span>Login</span>
+        </button><br><br>
 
       </form>
 
-      <button [routerLink]="['./forgot-password']" mat-button color="primary">Esqueceu sua senha?</button>
-      <button [routerLink]="['./register']" mat-button color="primary">Novo aqui? Cadastre-se</button>
+      <button [routerLink]="['./forgot-password']" mat-button color="primary" class="fonte-titulo">Esqueceu sua senha?</button>
+      <button [routerLink]="['./register']" mat-button color="primary" class="fonte-titulo">Novo aqui? Cadastre-se</button>
+      <hr>
+      <br>
+
+      <button mat-raised-button color="warn" (click)="authService.googleSignin()" class="fonte-titulo">
+        <mat-icon>mail</mat-icon>
+        <span>Entre com Google</span>
+      </button><br><br>
 
   </mat-card>
 </div>
